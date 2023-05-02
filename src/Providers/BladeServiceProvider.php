@@ -27,22 +27,6 @@ class BladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('checked', function ($expression) {
-            return "<?php echo (bool)$expression ? 'checked' : ''; ?>";
-        });
-        Blade::directive('selected', function ($expression) {
-            return "<?php echo (bool)$expression ? 'selected' : ''; ?>";
-        });
-        Blade::directive('disabled', function ($expression) {
-            return "<?php echo (bool)$expression ? 'disabled' : ''; ?>";
-        });
-        Blade::directive('readonly', function ($expression) {
-            return "<?php echo (bool)$expression ? 'readonly' : ''; ?>";
-        });
-        Blade::directive('required', function ($expression) {
-            return "<?php echo (bool)$expression ? 'required' : ''; ?>";
-        });
-
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'dwapps-blade-components');
         Blade::components([
             Check::class          => 'check',

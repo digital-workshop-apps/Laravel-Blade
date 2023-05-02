@@ -1,6 +1,6 @@
 # Laravel Blade components
 
-**PHP** ^8.0, **Laravel** ^8.0
+**PHP** ^8.0, **Laravel** ^9.0|^10.0
 
 ## About
 
@@ -16,15 +16,9 @@ With Laravel Blade components, you can create forms for Blade templates using th
 composer require dw-apps/laravel-blade
 ```
 
-## Directives
-
 ---
-
-@checked(), @selected(), @disabled(), @readonly(), @required()
 
 ## Components
-
----
 
 All components support Laravel session and standard HTML attributes.
 If the control id attribute is not set, its value will be equal to the name attribute.
@@ -33,6 +27,8 @@ If the control id attribute is not set, its value will be equal to the name attr
 * `uniq-id` - bool = false (Generate uniq id with prefix: 'control-')
 * `valid-class` - bool = 'is-valid' 
 * `invalid-class` - bool = 'is-invalid'
+
+---
 
 ### Form
 ```html
