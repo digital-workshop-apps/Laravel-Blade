@@ -1,0 +1,31 @@
+{
+    "name": "dw-apps/laravel-blade",
+    "type": "package",
+    "description": "Laravel Blade components",
+    "keywords": ["laravel", "components", "blade", "html"],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^8.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir R",
+            "email": "made.in.cccp85@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DWApps\\Laravel\\Blade\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DWApps\\Laravel\\Blade\\Providers\\BladeServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": false
+}
