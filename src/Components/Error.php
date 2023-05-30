@@ -19,9 +19,6 @@ class Error extends Component
         if ($this->dotName) {
             $this->name = $this->dotName();
         }
-        else {
-            $this->name = str_replace('.', '_', $this->name);
-        }
     }
 
     /**
