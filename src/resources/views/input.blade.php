@@ -4,7 +4,7 @@
         'type'    => $type,
         'name'    => $falseIfEmpty($name),
         'value'   => $value,
-        'class'   => $validatedClass(),
         'checked' => $checked(),
     ])
+    ->class([$invalidClass => $errors->has($dotName())])
 }}>
