@@ -42,7 +42,7 @@ class SelectRange extends Component implements BaseComponent
     public function render()
     {
         return <<<'blade'
-            <select {{ $attributes->merge(['id' => $falseIfEmpty($id), 'name' => $falseIfEmpty($name), 'class' => $validatedClass()]) }}>
+            <select {{ $attributes->merge(['id' => $falseIfEmpty($id), 'name' => $falseIfEmpty($name)])->class([$invalidClass => $errors->has($dotName())]) }}>
                 @include('dwapps-blade-components::select-placeholder')
                 @foreach(range($start, $end, $step) as $item)
                     <option value="{{ $item }}" {{ $selected($attributeSelected($item)) }}>{{ $item }}</option>

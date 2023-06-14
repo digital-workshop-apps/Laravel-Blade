@@ -4,7 +4,6 @@ namespace DWApps\Laravel\Blade\Traits;
 
 use DateTimeInterface;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\ViewErrorBag;
 
 trait ComponentBuilder
 {
@@ -13,16 +12,6 @@ trait ComponentBuilder
     public function valueIsEmpty(): bool
     {
         return in_array($this->value, [null, ''], true);
-    }
-
-    public function validatedClass(): string|bool
-    {
-        $errors = session()->get('errors') ?: new ViewErrorBag;
-        if ($errors->isNotEmpty()) {
-            return $errors->has($this->dotName()) ? $this->invalidClass : $this->validClass;
-        }
-
-        return false;
     }
 
     public function attributeId(): mixed
