@@ -41,7 +41,17 @@ class SelectTimeZone extends Component implements BaseComponent
     public function render()
     {
         return <<<'blade'
-            <select {{ $attributes->merge(['id' => $falseIfEmpty($id), 'name' => $falseIfEmpty($name)])->class([$invalidClass => $errors->has($dotName())]) }}>
+            <select {{
+                $attributes
+                    ->merge([
+                        'id' => $falseIfEmpty($id),
+                        'name' => $falseIfEmpty($name)
+                    ])
+                    ->class([
+                        $invalidClass => $errors->has($dotName()),
+                        $validClass => $errors->any() && !$errors->has($dotName()),
+                    ])
+            }}>
                 @include('dwapps-blade-components::select-placeholder')
                 @foreach($getTimeZones() as $item)
                     <option value="{{ $item }}" {{ $selected($attributeSelected($item)) }}>{{ $item }}</option>
