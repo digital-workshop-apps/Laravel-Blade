@@ -38,10 +38,10 @@ class Textarea extends Component implements BaseComponent
             <textarea {{ $attributes->merge([
                 'id'    => $falseIfEmpty($id),
                 'name'  => $falseIfEmpty($name),
-                'class' => $validatedClass(),
                 'autocomplete' => $autocomplete,
-            ]) }}
-            >{{ (string)$value }}</textarea>
+            ])
+            ->class([$invalidClass => $errors->has($dotName())])
+        }}>{{ (string)$value }}</textarea>
         blade;
     }
 }

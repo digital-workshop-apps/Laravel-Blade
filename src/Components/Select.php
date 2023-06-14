@@ -40,7 +40,7 @@ class Select extends Component implements BaseComponent
     public function render()
     {
         return <<<'blade'
-            <select {{ $attributes->merge(['id' => $falseIfEmpty($id), 'name' => $falseIfEmpty($name), 'class' => $validatedClass()]) }}>
+            <select {{ $attributes->merge(['id' => $falseIfEmpty($id), 'name' => $falseIfEmpty($name)])->class([$invalidClass => $errors->has($dotName())]) }}>
                 @include('dwapps-blade-components::select-placeholder')
                 {{ $slot }}
                 @foreach($source as $key => $val)
