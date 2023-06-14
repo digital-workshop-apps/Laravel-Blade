@@ -35,12 +35,17 @@ class Textarea extends Component implements BaseComponent
     public function render()
     {
         return <<<'blade'
-            <textarea {{ $attributes->merge([
-                'id'    => $falseIfEmpty($id),
-                'name'  => $falseIfEmpty($name),
-                'autocomplete' => $autocomplete,
-            ])
-            ->class([$invalidClass => $errors->has($dotName())])
+            <textarea {{
+                $attributes
+                ->merge([
+                    'id'    => $falseIfEmpty($id),
+                    'name'  => $falseIfEmpty($name),
+                    'autocomplete' => $autocomplete,
+                ])
+                ->class([
+                    $invalidClass => $errors->has($dotName()),
+                    $validClass => $errors->any() && !$errors->has($dotName()),
+                ])
         }}>{{ (string)$value }}</textarea>
         blade;
     }
