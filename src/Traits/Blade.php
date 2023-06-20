@@ -11,7 +11,7 @@ trait Blade
 
     public function dotName(): string
     {
-        return str_replace(['.', '[]', '[', ']'], ['_', '', '.', ''], $this->name);
+        return str_replace(['[]', '[', ']'], ['', '.', ''], $this->name);
     }
 
     protected function old(): mixed
