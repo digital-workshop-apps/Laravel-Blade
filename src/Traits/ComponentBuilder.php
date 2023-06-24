@@ -11,7 +11,7 @@ trait ComponentBuilder
 
     public function valueIsEmpty(): bool
     {
-        return in_array($this->value, [null, ''], true);
+        return blank($this->value);
     }
 
     public function attributeId(): mixed
