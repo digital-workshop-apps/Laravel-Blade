@@ -32,6 +32,11 @@ class Select extends Component implements BaseComponent
         $this->fillAttributes();
     }
 
+    public function defaultValueIsEmpty(): bool
+    {
+        return is_null($this->placeholder) && is_null($this->placeholderDisabled) && $this->valueIsEmpty();
+    }
+
     /**
      * Get the view / contents that represent the component.
      *
@@ -57,11 +62,19 @@ class Select extends Component implements BaseComponent
                     @if(is_array($val))
                     <optgroup label="{{ $key }}">
                         @foreach($val as $key => $val)
-                            <option value="{{ $key }}" {{ $selected($attributeSelected($key)) }}>{{ $val }}</option>
+                            @if($loop->parent->first && $loop->first && $slot->isEmpty() && $defaultValueIsEmpty())
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                            @else
+                                <option value="{{ $key }}" {{ $selected($attributeSelected($key)) }}>{{ $val }}</option>
+                            @endif
                         @endforeach
                     </optgroup>
                     @else
-                        <option value="{{ $key }}" {{ $selected($attributeSelected($key)) }}>{{ $val }}</option>
+                        @if($loop->first && $slot->isEmpty() && $defaultValueIsEmpty())
+                            <option value="{{ $key }}" selected>{{ $val }}</option>
+                        @else
+                            <option value="{{ $key }}" {{ $selected($attributeSelected($key)) }}>{{ $val }}</option>
+                        @endif
                     @endif
                 @endforeach
             </select>
